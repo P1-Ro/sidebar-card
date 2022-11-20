@@ -969,7 +969,9 @@ function watchLocationChange() {
       }
 
       const sidebar = customSidebarWrapper.querySelector("sidebar-card");
-      sidebar._updateActiveMenu();
+      if (sidebar) {
+        sidebar._updateActiveMenu();
+      }
     });
   }, 1000);
 }

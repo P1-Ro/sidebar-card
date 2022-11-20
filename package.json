@@ -28,8 +28,8 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.0",
     "@rollup/plugin-json": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
     "acorn": ">=7.3.1",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -53,7 +53,7 @@
   "scripts": {
     "start": "rollup -c --watch",
     "build": "npm run lint && npm run rollup",
-    "lint": "eslint src/*.ts",
+    "lint": "eslint src/*.ts --fix",
     "rollup": "rollup -c"
   }
 }

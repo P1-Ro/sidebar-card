@@ -284,6 +284,11 @@ class SidebarCard extends LitElement {
       true
     );
 
+    setTimeout(() => {
+      this.updateSidebarSize();
+      this._updateActiveMenu();
+    }, 10);
+
     if (this.bottomCard) {
       setTimeout(() => {
         let card = {
@@ -321,7 +326,7 @@ class SidebarCard extends LitElement {
             }, 100);
           }
         }
-      }, 2);
+      }, 20);
     }
   }
 

@@ -9,7 +9,7 @@
 // ##########################################################################################
 
 const SIDEBAR_CARD_TITLE = 'SIDEBAR-CARD';
-const SIDEBAR_CARD_VERSION = '1.1.9';
+const SIDEBAR_CARD_VERSION = '1.1.10';
 
 // ##########################################################################################
 // ###   Import dependencies
@@ -282,12 +282,6 @@ class SidebarCard extends LitElement {
         this.updateSidebarSize();
       },
       true
-    );
-    window.addEventListener(
-      'location-changed',
-      () => {
-        this._updateActiveMenu();
-      },
     );
 
     if (this.bottomCard) {
@@ -955,19 +949,22 @@ function subscribeEvents(appLayout: any, sidebarConfig: any, contentContainer: a
 
 function watchLocationChange() {
   setTimeout(() => {
-    window.addEventListener('location-changed', () => {
+    window.addEventListener('location-changed', async () => {
       const root = getRoot();
       if (!root) return; // location changed before finishing dom rendering
       const appLayout = root.shadowRoot.querySelector('div');
-      const customSidebarWrapper = appLayout.querySelector('#customSidebarWrapper');
+      const customSidebarWrapper = appLayout.shadowRoot.querySelector('#customSidebarWrapper');
       if (!customSidebarWrapper) {
-        buildSidebar();
+        await buildSidebar();
       } else {
         const customSidebar = customSidebarWrapper.querySelector('#customSidebar');
         if (!customSidebar) {
-          buildSidebar();
+          await buildSidebar();
         }
       }
+
+      const sidebar = customSidebarWrapper.querySelector("sidebar-card");
+      sidebar._updateActiveMenu();
     });
   }, 1000);
 }

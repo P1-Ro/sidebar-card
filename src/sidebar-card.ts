@@ -284,7 +284,7 @@ class SidebarCard extends LitElement {
       true
     );
     window.addEventListener(
-      'locationchange',
+      'location-changed',
       () => {
         this._updateActiveMenu();
       },

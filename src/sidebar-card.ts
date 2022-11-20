@@ -975,7 +975,7 @@ function watchLocationChange() {
 }
 
 // build the custom sidebar card
-async function buildCard(sidebar: any, config: any) {
+function buildCard(sidebar: any, config: any) {
   const sidebarCard = document.createElement('sidebar-card') as SidebarCard;
   sidebarCard.setConfig(config);
   sidebarCard.hass = hass();
@@ -1075,12 +1075,12 @@ async function buildSidebar() {
     sidebar.setAttribute('id', 'customSidebar');
     wrapper.appendChild(sidebar);
     wrapper.appendChild(contentContainer);
-    await buildCard(sidebar, sidebarConfig);
+    buildCard(sidebar, sidebarConfig);
     //updateStyling(appLayout, sidebarConfig);
     subscribeEvents(appLayout, sidebarConfig, contentContainer, sidebar);
     setTimeout(function() {
       updateStyling(appLayout, sidebarConfig);
-    }, 1);
+    }, 10);
   } else {
     error2console('buildSidebar', 'Error sidebar in width config!');
   }
@@ -1094,5 +1094,6 @@ console.info(
   'color: white; background: dimgrey; font-weight: 700;'
 );
 
-buildSidebar();
-watchLocationChange();
+buildSidebar().then(() => {
+  watchLocationChange();
+});

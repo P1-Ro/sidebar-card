@@ -9,7 +9,7 @@
 // ##########################################################################################
 
 const SIDEBAR_CARD_TITLE = 'SIDEBAR-CARD';
-const SIDEBAR_CARD_VERSION = '1.1.11';
+const SIDEBAR_CARD_VERSION = '1.1.13';
 
 // ##########################################################################################
 // ###   Import dependencies
@@ -1009,6 +1009,10 @@ async function getConfig() {
 
 async function buildSidebar() {
   const sidebarConfig = await getConfig();
+  if (!sidebarConfig) {
+    return;
+  }
+
   if (!sidebarConfig.width || (sidebarConfig.width && typeof sidebarConfig.width == 'number' && sidebarConfig.width > 0 && sidebarConfig.width < 100) || (sidebarConfig.width && typeof sidebarConfig.width == 'object')) {
     const root = getRoot();
     const hassSidebar = getSidebar();

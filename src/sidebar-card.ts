@@ -1000,8 +1000,6 @@ async function getConfig() {
 
   if (lovelace.config.sidebar) {
     return Object.assign({}, lovelace.config.sidebar);
-  } else {
-    log2console('buildSidebar', 'No sidebar in config found!');
   }
 }
 

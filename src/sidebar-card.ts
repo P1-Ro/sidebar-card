@@ -805,7 +805,7 @@ function getLovelace() {
 
 function log2console(method: string, message: string, object?: any) {
   getConfig().then(sidebarConfig => {
-    if (sidebarConfig.debug === true) {
+    if (sidebarConfig?.debug === true) {
       console.info(`%c${SIDEBAR_CARD_TITLE}: %c ${method.padEnd(24)} -> %c ${message}`, 'color: chartreuse; background: black; font-weight: 700;', 'color: yellow; background: black; font-weight: 700;', '', object);
     }
   });
@@ -813,7 +813,7 @@ function log2console(method: string, message: string, object?: any) {
 
 function error2console(method: string, message: string, object?: any) {
   getConfig().then(sidebarConfig => {
-    if (sidebarConfig.debug === true) {
+    if (sidebarConfig?.debug === true) {
       console.error(`%c${SIDEBAR_CARD_TITLE}: %c ${method.padEnd(24)} -> %c ${message}`, 'color: red; background: black; font-weight: 700;', 'color: white; background: black; font-weight: 700;', 'color:red', object);
     }
   })

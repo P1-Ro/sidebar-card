@@ -967,7 +967,7 @@ function watchLocationChange() {
         }
       }
 
-      const sidebar = customSidebarWrapper.querySelector("sidebar-card");
+      const sidebar = customSidebarWrapper?.querySelector("sidebar-card");
       if (sidebar) {
         sidebar._updateActiveMenu();
       }

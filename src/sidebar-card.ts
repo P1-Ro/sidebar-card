@@ -957,8 +957,7 @@ function watchLocationChange() {
     window.addEventListener('location-changed', async () => {
       const root = getRoot();
       if (!root) return; // location changed before finishing dom rendering
-      const appLayout = root.shadowRoot.querySelector('div');
-      const customSidebarWrapper = appLayout.shadowRoot.querySelector('#customSidebarWrapper');
+      const customSidebarWrapper = root.shadowRoot.querySelector('#customSidebarWrapper');
       if (!customSidebarWrapper) {
         await buildSidebar();
       } else {
